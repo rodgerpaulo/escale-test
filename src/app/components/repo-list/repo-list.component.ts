@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+
+import { RepoCardComponent } from './common/repo-card/repo-card.component';
 import { RepoListService } from '../../services/repo-list.service';
+
+import { RepositoryCardInterface } from './interfaces/repo-card';
 
 @Component({
   selector: 'app-repo-list',
@@ -8,33 +12,19 @@ import { RepoListService } from '../../services/repo-list.service';
 })
 export class RepoListComponent implements OnInit {
 
-  starredRepos: StarredRepos;
+  repositoryData: RepositoryCardInterface;
+  showFilters: boolean;
 
   constructor(private RepoListService: RepoListService) { }
 
   ngOnInit() {
-    this.RepoListService.getStarred().subscribe((starredRepos) => {
-      this.starredRepos = starredRepos;
+    this.RepoListService.getStarred().subscribe((repositoryData) => {
+      this.repositoryData = repositoryData;
     })
   }
 
-}
+  showFiltersToggle() {
+    this.showFilters = !this.showFilters;
+  }
 
-interface StarredRepos {
-  name: string;
-  full_name: string;
-  language: string;
-  language_url: string;
-  description: string;
-  stargazers_count: number;
-  open_issues_count: number;
-  created_at: string;
-  pushed_at: string;
-  owner: Owner;
-}
-
-interface Owner {
-  avatar_url: string;
-  html_url: string;
-  login: string;
 }

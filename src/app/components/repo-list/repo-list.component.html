@@ -1,19 +1,21 @@
+<div class="pos-f-t">
+  <div [ngClass]="{'show': showFilters}" class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-inverse p-4">
+      <h4 class="text-white">Collapsed content</h4>
+      <span class="text-muted">Toggleable via the navbar brand.</span>
+    </div>
+  </div>
+  <nav class="navbar navbar-inverse bg-inverse">
+    <button (click)="showFiltersToggle()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="fa fa-filter"></span>
+    </button>
+  </nav>
+</div>
 <div class="container container-fluid">
   <div class="row">
-    <div *ngFor="let repo of starredRepos; let i = index" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+    <div *ngFor="let repo of repositoryData; let i = index" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
       <!-- Repo card -->
-      <div class="card text-center">
-        <div class="card-header">
-          <h5>{{repo.name}}</h5>
-        </div>
-        <div class="card-block">
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
-        </div>
-        <div class="card-footer text-muted">
-          2 days ago
-        </div>
-      </div>
+      <app-repo-card [repositoryData]="repo"></app-repo-card>
       <!-- end Repo card -->
     </div>
   </div>

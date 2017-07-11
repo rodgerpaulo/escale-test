@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { RepoListComponent } from './components/repo-list/repo-list.component';
 
 import { RepoListService } from './services/repo-list.service';
+import { RepoCardComponent } from './components/repo-list/common/repo-card/repo-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RepoListComponent
+    RepoListComponent,
+    RepoCardComponent
   ],
   imports: [
     BrowserModule,

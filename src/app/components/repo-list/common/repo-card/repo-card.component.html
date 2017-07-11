@@ -1,0 +1,28 @@
+<div class="repo-card--container">
+  <div title="{{repositoryData.name}}" class="repo-card--header">
+    <h5><a href="{{repositoryData.html_url}}" target="_blank">{{repositoryData.name}}</a></h5>
+  </div>
+  <div class="repo-card--body">
+    <div class="row">
+      <div class="col repo-card--avatarContainer">
+        <a href="{{repositoryData.html_url}}" target="_blank">
+          <img [src]="repositoryData.owner.avatar_url" width="79" height="79" />
+        </a>
+      </div>
+      <div class="col">
+        <div class="row repo-card--numbers">
+          <span *ngIf="repositoryData.language" class="repo-card--itemLabel"><i class="fa fa-code" aria-hidden="true"></i> {{repositoryData.language}}</span>
+        </div>
+        <small *ngIf="repositoryData.description" class="repo-card--text text-muted">{{repositoryData.description | slice:0:50}} <span *ngIf="repositoryData.description.length > 40">...</span></small>
+      </div>
+    </div>
+  </div>
+  <ul class="repo-card--listGroup">
+    <li class="repo-card--listItem"><i class="fa fa-github" aria-hidden="true"></i>Stars: {{repositoryData.stargazers_count}}</li>
+    <li class="repo-card--listItem"><i class="fa fa-bug" aria-hidden="true"></i>Open issues: {{repositoryData.open_issues_count}}</li>
+  </ul>
+  <ul class="repo-card--listGroup">
+    <li class="repo-card--listItem"><i class="fa fa-calendar-o" aria-hidden="true"></i>Created: {{repositoryData.created_at | date:'dd/MM/yyyy'}}</li>
+    <li class="repo-card--listItem"><i class="fa fa-upload" aria-hidden="true"></i>Pushed: {{repositoryData.open_issues_count}}</li>
+  </ul>
+</div>

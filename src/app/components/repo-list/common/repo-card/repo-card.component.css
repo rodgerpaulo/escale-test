@@ -1,0 +1,44 @@
+.repo-card--container {
+    margin: 15px 0;
+    background-color: #eaebef;
+    border: 1px solid #d2d3d7;
+    border-radius: .25rem;
+}
+
+.repo-card--header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: #e3e4e8;
+    border-bottom: 1px solid #d2d3d7;
+}
+
+.repo-card--body {
+    padding: 1.25rem;
+}
+
+.repo-card--avatarContainer {
+    max-width: 110px;
+}
+
+.repo-card--itemLabel {
+    vertical-align: middle;
+}
+
+.repo-card--text {
+    line-height: 1.2rem;
+    display: inline-block;
+    max-height: 30px;
+}
+
+.repo-card--listGroup {
+    list-style-type: none;
+    padding: 0;
+}
+
+.repo-card--listItem {
+    padding: 2px 20px;
+}
+
+.repo-card--listItem .fa {
+    margin-right: 10px;
+}
