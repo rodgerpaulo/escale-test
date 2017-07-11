@@ -1,4 +1,4 @@
-<div class="repo-card--container">
+<div tabindex="{{itemIndex}}" class="repo-card--container">
   <div title="{{repositoryData.name}}" class="repo-card--header">
     <h5><a href="{{repositoryData.html_url}}" target="_blank">{{repositoryData.name}}</a></h5>
   </div>
@@ -13,7 +13,7 @@
         <div class="row repo-card--numbers">
           <span *ngIf="repositoryData.language" class="repo-card--itemLabel"><i class="fa fa-code" aria-hidden="true"></i> {{repositoryData.language}}</span>
         </div>
-        <small *ngIf="repositoryData.description" class="repo-card--text text-muted">{{repositoryData.description | slice:0:50}} <span *ngIf="repositoryData.description.length > 40">...</span></small>
+        <small title="{{repositoryData.description}}" *ngIf="repositoryData.description" class="repo-card--text text-muted">{{repositoryData.description | slice:0:50}} <span *ngIf="repositoryData.description.length > 40">...</span></small>
       </div>
     </div>
   </div>
@@ -23,6 +23,6 @@
   </ul>
   <ul class="repo-card--listGroup">
     <li class="repo-card--listItem"><i class="fa fa-calendar-o" aria-hidden="true"></i>Created: {{repositoryData.created_at | date:'dd/MM/yyyy'}}</li>
-    <li class="repo-card--listItem"><i class="fa fa-upload" aria-hidden="true"></i>Pushed: {{repositoryData.open_issues_count}}</li>
+    <li class="repo-card--listItem"><i class="fa fa-upload" aria-hidden="true"></i>Pushed: {{repositoryData.pushed_at | date:'dd/MM/yyyy'}}</li>
   </ul>
 </div>

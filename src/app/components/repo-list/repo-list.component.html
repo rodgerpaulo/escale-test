@@ -1,8 +1,12 @@
 <div class="pos-f-t">
   <div [ngClass]="{'show': showFilters}" class="collapse" id="navbarToggleExternalContent">
     <div class="bg-inverse p-4">
-      <h4 class="text-white">Collapsed content</h4>
-      <span class="text-muted">Toggleable via the navbar brand.</span>
+      <h4 class="text-white">Filtrar and order</h4>
+      <form class="form-inline">
+        <label class="list-form--filterLabel text-muted"><input [(ngModel)]="selectedFilter" class="form-control mr-sm-2" type="radio" name="filter_by" [value]="'name'">Repository name</label>
+        <label class="list-form--filterLabel text-muted"><input [(ngModel)]="selectedFilter" class="form-control mr-sm-2" type="radio" name="filter_by" [value]="'stargazers_count'">Stars count</label>
+        <label class="list-form--filterLabel text-muted"><input [(ngModel)]="selectedFilter" class="form-control mr-sm-2" type="radio" name="filter_by" [value]="'open_issues_count'">Open issues count</label>
+      </form>
     </div>
   </div>
   <nav class="navbar navbar-inverse bg-inverse">
@@ -12,10 +16,11 @@
   </nav>
 </div>
 <div class="container container-fluid">
+  language filter: <code>{{languageFilter | json}}</code>
   <div class="row">
     <div *ngFor="let repo of repositoryData; let i = index" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
       <!-- Repo card -->
-      <app-repo-card [repositoryData]="repo"></app-repo-card>
+      <app-repo-card [repositoryData]="repo" [itemIndex]="i"></app-repo-card>
       <!-- end Repo card -->
     </div>
   </div>

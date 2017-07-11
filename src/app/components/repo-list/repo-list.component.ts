@@ -14,17 +14,27 @@ export class RepoListComponent implements OnInit {
 
   repositoryData: RepositoryCardInterface;
   showFilters: boolean;
+  selectedFilter: string;
+  languageFilter: LanguageFilter;
 
   constructor(private RepoListService: RepoListService) { }
 
   ngOnInit() {
     this.RepoListService.getStarred().subscribe((repositoryData) => {
       this.repositoryData = repositoryData;
-    })
+      this.languageFilter = repositoryData.filter(function (value, index, self) {
+        return self.indexOf(value) === index;
+      });
+    });
+    this.selectedFilter = 'name';
   }
 
   showFiltersToggle() {
     this.showFilters = !this.showFilters;
   }
 
+}
+
+interface LanguageFilter {
+  language: string;
 }

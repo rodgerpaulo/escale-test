@@ -9,6 +9,8 @@ import { RepositoryCardInterface } from '../../interfaces/repo-card';
 export class RepoCardComponent implements OnInit {
   @Input('repositoryData')
   repositoryData: RepositoryCardInterface;
+  @Input('itemIndex')
+  itemIndex: number;
 
   constructor() { }
 

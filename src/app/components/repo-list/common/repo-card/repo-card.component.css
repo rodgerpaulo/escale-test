@@ -37,6 +37,7 @@
 
 .repo-card--listItem {
     padding: 2px 20px;
+    vertical-align: middle;
 }
 
 .repo-card--listItem .fa {
