@@ -12,6 +12,11 @@
     border-bottom: 1px solid #d2d3d7;
 }
 
+.repo-card--header h5 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .repo-card--body {
     padding: 1.25rem;
 }

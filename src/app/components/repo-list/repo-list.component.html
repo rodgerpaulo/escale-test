@@ -16,9 +16,8 @@
   </nav>
 </div>
 <div class="container container-fluid">
-  language filter: <code>{{languageFilter | json}}</code>
   <div class="row">
-    <div *ngFor="let repo of repositoryData; let i = index" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+    <div *ngFor="let repo of repositoryData | orderBy: selectedFilter : true; let i = index" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
       <!-- Repo card -->
       <app-repo-card [repositoryData]="repo" [itemIndex]="i"></app-repo-card>
       <!-- end Repo card -->

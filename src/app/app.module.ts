@@ -9,16 +9,21 @@ import { RepoListComponent } from './components/repo-list/repo-list.component';
 import { RepoListService } from './services/repo-list.service';
 import { RepoCardComponent } from './components/repo-list/common/repo-card/repo-card.component';
 
+import { SortPipe } from './pipes/sort.pipe';
+import { OrderModule } from 'ngx-order-pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
     RepoListComponent,
-    RepoCardComponent
+    RepoCardComponent,
+    SortPipe
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    OrderModule
   ],
   providers: [RepoListService],
   bootstrap: [AppComponent]

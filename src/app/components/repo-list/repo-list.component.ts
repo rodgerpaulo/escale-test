@@ -22,9 +22,9 @@ export class RepoListComponent implements OnInit {
   ngOnInit() {
     this.RepoListService.getStarred().subscribe((repositoryData) => {
       this.repositoryData = repositoryData;
-      this.languageFilter = repositoryData.filter(function (value, index, self) {
-        return self.indexOf(value) === index;
-      });
+      // repositoryData.forEach(function(element, index){
+
+      // });
     });
     this.selectedFilter = 'name';
   }
