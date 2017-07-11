@@ -11,7 +11,7 @@
         <p class="text-muted">Filter results by</p>
         <label class="list-form--filterLabel text-muted">
           Language
-          <select name="filterLanguage" [(ngModel)]="selectedFilter">
+          <select (ngModelChange)="showFilters = false" name="filterLanguage" [(ngModel)]="selectedFilter">
             <option *ngFor="let filter of languageFilters | orderBy: 'language'" [ngValue]="filter">{{filter.label}}</option>
           </select>
         </label>
@@ -24,11 +24,9 @@
     </button>
   </nav>
 </div>
-<div class="jumbotron jumbotron-fluid">
+<div *ngIf="selectedFilter && selectedFilter.label != 'All'" class="jumbotron jumbotron-fluid">
   <div class="container text-center">
-    <h1 class="display-4">Starred repos from <a href="#">{{user.login}}</a></h1>
-    <br>
-    <img [src]="user.avatar_url" alt="..." class="rounded-circle">
+    <span>filtered by language: {{selectedFilter.label}} <button title="clear search" (click)="selectedFilter = languageFilters[0]" class="btn btn-secondary btn-sm" type="button" aria-label="Close"><span aria-hidden="true">&times;</span></button></span>
   </div>
 </div>
 <div class="container container-fluid">

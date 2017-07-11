@@ -19,26 +19,27 @@ export class RepoListComponent implements OnInit {
   selectedOrder: string;
   selectedFilter: LanguageFilter;
   languageFilters: LanguageFilter[];
-  user: User;
+  currentUser: User;
 
   constructor(private RepoListService: RepoListService) { }
 
   ngOnInit() {
     this.RepoListService.getStarred().subscribe((repositoryData) => {
+
       this.repositoryData = repositoryData;
+      const languageFilters = [];
 
-      let languageFilters = []
+      // push defalut option
+      languageFilters.push({ label: 'All', value: -1 });
 
-      //push defalut option
-      languageFilters.push({label: 'All', value: -1});
-
-      //parse result and create language filters
-      repositoryData.forEach(function(element, index){
+      // parse result and create language filters
+      repositoryData.forEach(function (element, index) {
         const filter = {};
         filter['label'] = (element.language || 'not specified');
-        filter['value'] = element.language;
+        filter['value'] = (element.language || 'not specified');
 
-        if (languageFilters.findIndex(index => index.label === filter['label']) == -1) {
+        // tslint:disable-next-line:no-shadowed-variable
+        if (languageFilters.findIndex(index => index.label === filter['label']) === -1) {
           languageFilters.push(filter);
         }
       });
@@ -47,9 +48,6 @@ export class RepoListComponent implements OnInit {
 
     });
 
-    this.RepoListService.getUser().subscribe((user) => {
-      this.user = user;
-    });
     this.selectedOrder = 'name';
   }
 

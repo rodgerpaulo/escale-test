@@ -11,7 +11,7 @@
       </div>
       <div class="col">
         <div class="row repo-card--numbers">
-          <span *ngIf="repositoryData.language" class="repo-card--itemLabel"><i class="fa fa-code" aria-hidden="true"></i> {{repositoryData.language}}</span>
+          <span *ngIf="repositoryData.language != 'not specified'" class="repo-card--itemLabel"><i class="fa fa-code" aria-hidden="true"></i> {{repositoryData.language}}</span>
         </div>
         <small title="{{repositoryData.description}}" *ngIf="repositoryData.description" class="repo-card--text text-muted">{{repositoryData.description | slice:0:50}} <span *ngIf="repositoryData.description.length > 40">...</span></small>
       </div>

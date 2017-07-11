@@ -6,12 +6,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FilterListPipe implements PipeTransform {
 
   transform(items: any, filter: any, prop: string): any {
-    if (!items || !filter || filter.value == -1) {
+    if (!items || !filter || filter.value === -1) {
       return items
     }
     console.log(items, filter);
     return items.filter(function(item){
-      item[prop] = (item[prop] || 'not especified');
+      item[prop] = (item[prop] || 'not specified');
       if (item[prop].indexOf(filter.label) !== -1) {
         return true;
       }
