@@ -1,16 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { RepoListComponent } from './components/repo-list/repo-list.component';
+
+import { RepoListService } from './services/repo-list.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RepoListComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [RepoListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
