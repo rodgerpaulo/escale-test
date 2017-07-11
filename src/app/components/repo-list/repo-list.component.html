@@ -1,11 +1,20 @@
 <div class="pos-f-t">
   <div [ngClass]="{'show': showFilters}" class="collapse" id="navbarToggleExternalContent">
     <div class="bg-inverse p-4">
-      <h4 class="text-white">Filtrar and order</h4>
-      <form class="form-inline">
-        <label class="list-form--filterLabel text-muted"><input [(ngModel)]="selectedFilter" class="form-control mr-sm-2" type="radio" name="filter_by" [value]="'name'">Repository name</label>
-        <label class="list-form--filterLabel text-muted"><input [(ngModel)]="selectedFilter" class="form-control mr-sm-2" type="radio" name="filter_by" [value]="'stargazers_count'">Stars count</label>
-        <label class="list-form--filterLabel text-muted"><input [(ngModel)]="selectedFilter" class="form-control mr-sm-2" type="radio" name="filter_by" [value]="'open_issues_count'">Open issues count</label>
+      <h4 class="text-white">Filter and order</h4>
+      <form name="formFilter">
+        <p class="text-muted">Order by</p>
+        <label class="list-form--filterLabel text-muted"><input [(ngModel)]="selectedOrder" class="mr-sm-2" type="radio" name="filter_by" [value]="'name'">Repository name</label>
+        <label class="list-form--filterLabel text-muted"><input [(ngModel)]="selectedOrder" class="mr-sm-2" type="radio" name="filter_by" [value]="'stargazers_count'">Stars count</label>
+        <label class="list-form--filterLabel text-muted"><input [(ngModel)]="selectedOrder" class="mr-sm-2" type="radio" name="filter_by" [value]="'open_issues_count'">Open issues count</label>
+        <hr>
+        <p class="text-muted">Filter results by</p>
+        <label class="list-form--filterLabel text-muted">
+          Language
+          <select name="filterLanguage" [(ngModel)]="selectedFilter">
+            <option *ngFor="let filter of languageFilters | orderBy: 'language'" [ngValue]="filter">{{filter.label}}</option>
+          </select>
+        </label>
       </form>
     </div>
   </div>
@@ -16,8 +25,9 @@
   </nav>
 </div>
 <div class="container container-fluid">
+  languageFilters: <code>{{selectedFilter | json}}</code>
   <div class="row">
-    <div *ngFor="let repo of repositoryData | orderBy: selectedFilter : true; let i = index" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+    <div *ngFor="let repo of repositoryData | orderBy: selectedOrder : true | filterList : selectedFilter : 'language'; let i = index" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
       <!-- Repo card -->
       <app-repo-card [repositoryData]="repo" [itemIndex]="i"></app-repo-card>
       <!-- end Repo card -->

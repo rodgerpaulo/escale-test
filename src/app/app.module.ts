@@ -9,7 +9,7 @@ import { RepoListComponent } from './components/repo-list/repo-list.component';
 import { RepoListService } from './services/repo-list.service';
 import { RepoCardComponent } from './components/repo-list/common/repo-card/repo-card.component';
 
-import { SortPipe } from './pipes/sort.pipe';
+import { FilterListPipe } from './pipes/filter-list.pipe';
 import { OrderModule } from 'ngx-order-pipe';
 
 @NgModule({
@@ -17,7 +17,7 @@ import { OrderModule } from 'ngx-order-pipe';
     AppComponent,
     RepoListComponent,
     RepoCardComponent,
-    SortPipe
+    FilterListPipe
   ],
   imports: [
     BrowserModule,

@@ -14,19 +14,36 @@ export class RepoListComponent implements OnInit {
 
   repositoryData: RepositoryCardInterface;
   showFilters: boolean;
-  selectedFilter: string;
-  languageFilter: LanguageFilter;
+  selectedOrder: string;
+  selectedFilter: LanguageFilter[];
+  languageFilters: LanguageFilter[];
 
   constructor(private RepoListService: RepoListService) { }
 
   ngOnInit() {
     this.RepoListService.getStarred().subscribe((repositoryData) => {
       this.repositoryData = repositoryData;
-      // repositoryData.forEach(function(element, index){
 
-      // });
+      let languageFilters = []
+
+      //push defalut option
+      languageFilters.push({label: 'All', value: -1});
+
+      //parse result and create language filters
+      repositoryData.forEach(function(element, index){
+        const filter = {};
+        filter['label'] = (element.language || 'not specified');
+        filter['value'] = element.language;
+
+        if (languageFilters.findIndex(index => index.label === filter['label']) == -1) {
+          languageFilters.push(filter);
+        }
+      });
+
+      this.languageFilters = languageFilters
+
     });
-    this.selectedFilter = 'name';
+    this.selectedOrder = 'name';
   }
 
   showFiltersToggle() {
@@ -36,5 +53,6 @@ export class RepoListComponent implements OnInit {
 }
 
 interface LanguageFilter {
-  language: string;
+  label: any;
+  value: string
 }
