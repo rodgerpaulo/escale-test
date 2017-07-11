@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { RepoCardComponent } from './common/repo-card/repo-card.component';
 import { RepoListService } from '../../services/repo-list.service';
 
-import { RepositoryCardInterface } from './interfaces/repo-card';
+import { RepositoryCardInterface } from './interfaces/repo-card.interface';
+import { LanguageFilter } from './interfaces/language-filter.interface';
+import { User } from './interfaces/user.interface';
 
 @Component({
   selector: 'app-repo-list',
@@ -15,8 +17,9 @@ export class RepoListComponent implements OnInit {
   repositoryData: RepositoryCardInterface;
   showFilters: boolean;
   selectedOrder: string;
-  selectedFilter: LanguageFilter[];
+  selectedFilter: LanguageFilter;
   languageFilters: LanguageFilter[];
+  user: User;
 
   constructor(private RepoListService: RepoListService) { }
 
@@ -43,6 +46,10 @@ export class RepoListComponent implements OnInit {
       this.languageFilters = languageFilters
 
     });
+
+    this.RepoListService.getUser().subscribe((user) => {
+      this.user = user;
+    });
     this.selectedOrder = 'name';
   }
 
@@ -50,9 +57,4 @@ export class RepoListComponent implements OnInit {
     this.showFilters = !this.showFilters;
   }
 
-}
-
-interface LanguageFilter {
-  label: any;
-  value: string
 }

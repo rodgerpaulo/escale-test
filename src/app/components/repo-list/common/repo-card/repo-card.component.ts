@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RepositoryCardInterface } from '../../interfaces/repo-card';
+import { RepositoryCardInterface } from '../../interfaces/repo-card.interface';
 
 @Component({
   selector: 'app-repo-card',

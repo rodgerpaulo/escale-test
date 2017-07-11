@@ -19,10 +19,17 @@
     </div>
   </div>
   <nav class="navbar navbar-inverse bg-inverse">
-    <button (click)="showFiltersToggle()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button (click)="showFiltersToggle()" class="navbar-toggler" type="button">
       <span class="fa fa-filter"></span>
     </button>
   </nav>
+</div>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container text-center">
+    <h1 class="display-4">Starred repos from <a href="#">{{user.login}}</a></h1>
+    <br>
+    <img [src]="user.avatar_url" alt="..." class="rounded-circle">
+  </div>
 </div>
 <div class="container container-fluid">
   <div class="row">
